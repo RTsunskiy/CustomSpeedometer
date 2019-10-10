@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpeedometerProgressView">
+        <attr name="speed" format="integer" />
+        <attr name="maxSpeed" format="integer" />
+        <attr name="lowSpeedColor" format="color" />
+        <attr name="mediumSpeedColor" format="color"/>
+        <attr name="highSpeedColor" format="color"/>
+        <attr name="arrowColor" format="color"/>
+    </declare-styleable>
+</resources>

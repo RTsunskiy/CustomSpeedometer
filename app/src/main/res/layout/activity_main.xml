@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <com.example.customspeedometer.SpeedometerProgressView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:arrowColor="@color/colorAccent"
+        app:lowSpeedColor="@color/colorAccent"
+        app:mediumSpeedColor="@color/colorPrimary"
+        app:highSpeedColor="@color/colorPrimaryDark"
+        app:speed="100"
+        app:maxSpeed="240"/>
+
+</FrameLayout>
