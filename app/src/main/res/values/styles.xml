@@ -10,7 +10,7 @@
     </style>
 
     <style name="SpeedometerProgressDefaultStyle">
-        <item name="speed">50</item>
+        <item name="speed">40</item>
         <item name="maxSpeed">240</item>
         <item name="lowSpeedColor">@color/colorLowSpeed</item>
         <item name="mediumSpeedColor">@color/colorMediumSpeed</item>
