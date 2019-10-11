@@ -28,6 +28,8 @@ public class SpeedometerProgressView extends View {
     private Paint arrowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
+ //   private float radius;
+
 
     private RectF progressRect = new RectF(0, 0, 700, 700);
 
@@ -51,19 +53,18 @@ public class SpeedometerProgressView extends View {
             circlePaint.setStrokeWidth(64f);
             circlePaint.setStyle(Paint.Style.STROKE);
             if (speed <= 50) {
-                circlePaint.setColor(getResources().getColor(R.color.colorLowSpeed));
+                circlePaint.setColor(lowSpeedColor);
             }
            else if (speed > 50 && speed <= 100) {
-                circlePaint.setColor(getResources().getColor(R.color.colorMediumSpeed));
+                circlePaint.setColor(mediumSpeedColor);
             }
             else if (speed > 100) {
-                circlePaint.setColor(getResources().getColor(R.color.colorHighSpeed));
+                circlePaint.setColor(highSpeedColor);
             }
-
+            
             invalidate();
 
         }
-
 
 
     private void configureTextPaint() {
@@ -71,10 +72,15 @@ public class SpeedometerProgressView extends View {
             textPaint.setColor(Color.RED);
         }
 
+        private void configureArrowPaint() {
+        arrowPaint.setColor(arrowColor);
+        arrowPaint.setStrokeWidth(10f);
+        }
+
     private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
         extractAttributes(context, attrs);
-       // configureCirclePaint();
         configureTextPaint();
+        configureArrowPaint();
     }
 
         public int getSpeed() {
@@ -130,9 +136,26 @@ public class SpeedometerProgressView extends View {
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            canvas.translate(200, 100);
+            canvas.translate(200, 200);
             canvas.drawArc(progressRect, -90f, speed * 360 / maxSpeed , false, circlePaint);
             configureCirclePaint();
+
+
+//            if (progressRect.width() > progressRect.height()) {
+//                radius = progressRect.height() / 4;
+//            } else {
+//                radius = progressRect.width() / 4;
+//            }
+//            float angle = maxSpeed * (speed / 100);
+//
+//            double startX = Math.cos(Math.toRadians(270)) * radius + progressRect.width() / 2;
+//            double startY = Math.sin(Math.toRadians(270)) * radius + progressRect.height() / 2;
+//
+//            double endX = Math.cos(Math.toRadians(270 + angle)) * radius + progressRect.width() / 2;
+//            double endY = Math.sin(Math.toRadians(270 + angle)) * radius + progressRect.height() / 2;
+
+
+            canvas.drawLine(progressRect.centerX(), progressRect.centerY(), 10f, 10f,arrowPaint);
         }
 
 
