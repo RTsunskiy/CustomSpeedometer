@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SpeedometerProgressView speedometerProgressView = findViewById(R.id.speedometer_progress_view);
-        speedometerProgressView.setSpeed(200);
-        speedometerProgressView.setMaxSpeed(240);
+        speedometerProgressView.setSpeed(150);
+        speedometerProgressView.setMaxSpeed(200);
     }
 }

@@ -28,7 +28,7 @@ public class SpeedometerProgressView extends View {
     private Paint arrowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
- //   private float radius;
+    private float radius;
 
 
     private RectF progressRect = new RectF(0, 0, 700, 700);
@@ -68,7 +68,7 @@ public class SpeedometerProgressView extends View {
 
 
     private void configureTextPaint() {
-            textPaint.setTextSize(15f);
+            textPaint.setTextSize(50f);
             textPaint.setColor(Color.RED);
         }
 
@@ -137,7 +137,7 @@ public class SpeedometerProgressView extends View {
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
             canvas.translate(200, 200);
-            canvas.drawArc(progressRect, -90f, speed * 360 / maxSpeed , false, circlePaint);
+            canvas.drawArc(progressRect, 90f, speed * 360 / maxSpeed , false, circlePaint);
             configureCirclePaint();
 
 
@@ -154,8 +154,15 @@ public class SpeedometerProgressView extends View {
 //            double endX = Math.cos(Math.toRadians(270 + angle)) * radius + progressRect.width() / 2;
 //            double endY = Math.sin(Math.toRadians(270 + angle)) * radius + progressRect.height() / 2;
 
+            radius = progressRect.height() / 2;
 
-            canvas.drawLine(progressRect.centerX(), progressRect.centerY(), 10f, 10f,arrowPaint);
+            double angle = (2 * Math.PI) / maxSpeed * speed + Math.PI/2;
+            float x = (float)(radius * Math.cos(angle));
+            float y = (float)(radius * Math.sin(angle));
+
+            canvas.drawLine(progressRect.centerX(), progressRect.centerY(), x + progressRect.centerX(), y + progressRect.centerY(),arrowPaint);
+
+            canvas.drawText("Max: " + maxSpeed, progressRect.width() / 2 - 90f, progressRect.height() + 150f, textPaint);
         }
 
 
