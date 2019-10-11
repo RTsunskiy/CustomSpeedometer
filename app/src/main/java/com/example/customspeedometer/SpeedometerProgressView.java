@@ -162,7 +162,7 @@ public class SpeedometerProgressView extends View {
 
             canvas.drawLine(progressRect.centerX(), progressRect.centerY(), x + progressRect.centerX(), y + progressRect.centerY(),arrowPaint);
 
-            canvas.drawText("Max: " + maxSpeed, progressRect.width() / 2 - 90f, progressRect.height() + 150f, textPaint);
+            canvas.drawText("Max: " + maxSpeed + " Current: " + speed, progressRect.width() / 2 - 250f, progressRect.height() + 150f, textPaint);
         }
 
 
